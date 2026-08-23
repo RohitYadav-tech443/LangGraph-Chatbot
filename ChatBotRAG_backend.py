@@ -7,7 +7,8 @@ import tempfile
 import requests
 from typing import Annotated, Any, Dict, Optional, TypedDict    
 from langchain_groq import ChatGroq
-from langchain_community.embeddings import HuggingFaceEmbeddings
+# from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import FastEmbedEmbeddings
 from dotenv import load_dotenv
 from langchain_community.document_loaders import PyPDFLoader
 from langgraph.checkpoint.sqlite import SqliteSaver
@@ -37,9 +38,10 @@ def get_embeddings():
     global embeddings
 
     if embeddings is None:
-        embeddings = HuggingFaceEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2"
+        embeddings = FastEmbedEmbeddings(
+            model_name="BAAI/bge-small-en-v1.5"
         )
+
 
     return embeddings
 

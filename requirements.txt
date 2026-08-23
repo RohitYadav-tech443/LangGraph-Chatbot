@@ -13,7 +13,7 @@ langgraph
 langgraph-checkpoint-sqlite
 
 faiss-cpu
-sentence-transformers
+fastembed
 
 pypdf
 requests

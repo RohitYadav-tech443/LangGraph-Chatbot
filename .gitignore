@@ -1,7 +1,44 @@
-.env
-__pycache__/
-*.pyc
-chatbot.db
-chatbot.db-shm
-chatbot.db-wal
+# =========================
+# Python virtual environments
+# =========================
 myenv/
+cleanenv/
+venv/
+.venv/
+env/
+
+# =========================
+# Python cache
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+
+# =========================
+# SQLite database files
+# =========================
+*.db
+*.db-shm
+*.db-wal
+
+# =========================
+# Jupyter Notebook
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# IDE / VS Code
+# =========================
+.vscode/
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
