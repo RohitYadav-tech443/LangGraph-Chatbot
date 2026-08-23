@@ -18,3 +18,4 @@ fastembed
 pypdf
 requests
 duckduckgo-search
+ddgs
