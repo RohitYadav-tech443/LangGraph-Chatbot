@@ -29,9 +29,19 @@ llm = ChatGroq(
     model="qwen/qwen3.6-27b",
     temperature=0
 )
-embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
-)
+# embeddings = HuggingFaceEmbeddings(
+#     model_name="sentence-transformers/all-MiniLM-L6-v2"
+# )
+embeddings=None
+def get_embeddings():
+    global embeddings
+
+    if embeddings is None:
+        embeddings = HuggingFaceEmbeddings(
+            model_name="sentence-transformers/all-MiniLM-L6-v2"
+        )
+
+    return embeddings
 
 # -------------------
 # 2. PDF retriever store (per thread)
@@ -70,7 +80,7 @@ def ingest_pdf(file_bytes: bytes, thread_id: str, filename: Optional[str] = None
         )
         chunks = splitter.split_documents(docs)
 
-        vector_store = FAISS.from_documents(chunks, embeddings)
+        vector_store = FAISS.from_documents(chunks, get_embeddings())
         retriever = vector_store.as_retriever(
             search_type="similarity", search_kwargs={"k": 4}
         )
